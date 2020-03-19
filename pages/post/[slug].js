@@ -26,4 +26,3 @@ PostTemplate.getInitialProps = async (context) => {
   // Pass data to the component props
   return { ...data }
 }
-© 2020 GitHub, Inc.
