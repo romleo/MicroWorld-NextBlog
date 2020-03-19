@@ -1,16 +1,29 @@
 import React from 'react'
+import matter from 'gray-matter'
+import ReactMarkdown from 'react-markdown'
 
+export default function PostTemplate({ content, data }) {
+  // This holds the data between `---` from the .md file
+  const frontmatter = data
+  
+  return (
+    <div>
+      <h1>{frontmatter.title}</h1>
 
-export default function PostTamplate(props) {
-   return(
-     <div>
-       Heal we"ll load "{props.slug}" 
-     </div>  
-   ) 
+      <ReactMarkdown source={content} />
+    </div>
+  )
 }
 
 PostTemplate.getInitialProps = async (context) => {
-   const {slug} = context.query
+  const { slug } = context.query
+  // Import our .md file using the `slug` from the URL
+  const content = await import(`../../content/${slug}.md`)
 
-   return{slug}
+  // Parse .md data through `matter`
+  const data = matter(content.default)
+
+  // Pass data to the component props
+  return { ...data }
 }
+© 2020 GitHub, Inc.
