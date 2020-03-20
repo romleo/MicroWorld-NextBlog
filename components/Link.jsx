@@ -1,12 +1,12 @@
-import React, { forwardRef } from 'react';
-import { useRouter } from 'next/router';
+import React, {forwardRef} from 'react';
+import {useRouter} from 'next/router';
 import clsx from 'clsx';
 import NextLink from 'next/link';
 import MuiLink from '@material-ui/core/Link';
 import PropTypes from 'prop-types';
 
-const NextComposed = forwardRef(function NextComposed(props, ref){
-  const { href, as, prefetch, ...other } = props;
+const NextComposed = forwardRef(function NextComposed(props, ref) {
+  const {href, as, prefetch, ...other} = props;
   return (
     <NextLink href={href} as={as} prefetch={prefetch}>
       <a ref={ref} {...other} />
